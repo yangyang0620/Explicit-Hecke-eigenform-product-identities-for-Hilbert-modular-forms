@@ -1,2 +1,53 @@
 # Explicit-Hecke-eigenform-product-identities-for-Hilbert-modular-forms
-This repository contains SageMath code intended to verify the numerical results and data presented in the paper 'Explicit Hecke eigenform product identities for Hilbert modular forms‘.
+
+# Overview
+This repository contains **SageMath** scripts developed to verify the numerical results and validate Theorem 1 of the paper:
+             **Explicit Hecke eigenform product identities for Hilbert modular forms**
+
+# Methodology
+The core strategy for verifying the product identities relies on the comparison of Fourier coefficients and their analytic properties. The verification process follows these logical steps:
+1. Deriving Inequalities: By analyzing the equality relations of Fourier coefficients (for the identity f⋅h=g) and the analytic bounds of the associated functions, we construct necessary inequalities involving the weights (k1,k2) and the discriminant D.
+2. Establishing Bounds: These inequalities allow us to determine upper bounds for k1,k2, and D, effectively defining a finite search space.
+3. Exhaustive Verification: The program traverses all possible tuples (k1,k2,D) within these bounds.  
+(1) **Eisenstein-Eisenstein Case**: Verification is performed by checking the exact rational values of the Fourier coefficients (specifically the constant term).  
+(2) **Eisenstein-Cusp Case**: Verification is performed based on dimensional constraints of the space of cusp forms.  
+
+
+# File Structure & Description
+The codebase is divided into four SageMath scripts, corresponding to different cases of the modular forms involved.
+
+1. The case of Eisenstein-Eisenstein of distinct weights  
+Mathematical Basis: **Propositions 3.3 and 3.4**.  
+Logic:  
+Initializes Real Quadratic Fields (e.g., D=8,13,…).  
+Defines lower bound functions derived from the coefficient formulas (Eq 3.2).  
+  Phase 1: Determines a "Cutoff" for k2. For any k1 > k2 >= Cutoff, the lower bound exceeds 1, implying no identities exist.  
+  Phase 2: Exhaustively searches the range k2 < Cutoff. If the bound allows, it verifies the existence using the constant term identity (Eq 3.1).  
+Result: This script reproduces the proof of **Propositions 3.4**.  
+
+2. The case of Eisenstein-Eisenstein of equal weights  
+Mathematical Basis: **Proposition 3.8**.  
+Logic:  
+Determines the upper bound for the weight k.  
+Iterates through discriminants D to find satisfying fields and verifies the identities.  
+Result: This script reproduces **Table 1** of the paper, verifying the first part of Theorem 1.  
+
+4. The case of Eisenstein-Cusp with (2) inert  
+Mathematical Basis: **Proposition 4.12**.  
+Logic:  
+Determines the upper bound for the weight k1.
+Iterates through each fixed k1 to find the upper bound for k2. For each pair (k1,k2), finds the upper bound for D.  
+Result: This script reproduces **Table 2** of the paper, verifying the second part of Theorem 1.  
+
+6. The case of Eisenstein-Cusp with (2) not inert  
+Mathematical Basis: **Proposition 4.13**.  
+Logic:  
+Similar to the inert case, determines the upper bound for k1.
+Iterates through k1 to limit k2, and subsequently limits D.  
+Result: These results reproduce **Table 3** of the paper, verifying the second part of Theorem 1.  
+
+
+
+
+
+
