@@ -1,0 +1,36 @@
+// =================================================================
+// Magma Code to Verify Dimension Formula for Q(sqrt(8))
+// Corresponds to the claim: "dim S_{4 + k2}(Gamma_F) > 1 for k2 in [2, 14]"
+// =================================================================
+
+print "-------------------------------------------------------------";
+print "Checking Dimensions for F = Q(sqrt(8)), Level 1";
+print "Fixed parallel weight 4 + k2, Varying k2 in [2, 14]";
+print "-------------------------------------------------------------";
+
+// 1. Construct the Real Quadratic Field F = Q(sqrt(8))
+D := 8;
+F<a> := QuadraticField(D);
+ZF := Integers(F);
+N := 1*ZF; // Full Level
+
+// 2. Loop through k2 from 2 to 14 
+for k2 := 2 to 14 by 2 do
+    
+    // 3. Define the weight vector [k1, k2]
+    k1 := 4;
+    k := [k1 + k2, k1 + k2];
+    
+    // 4. Create the space of Hilbert Cusp Forms S_k(Gamma_F)
+    H := HilbertCuspForms(F, N, k);
+    
+    // 5. Compute the dimension
+    dim := Dimension(H);
+    
+    // 6. Output the result
+    printf "Weight k = [%o, %o] -> Dimension = %o \n", k1+k2, k1+k2, dim;
+
+end for;
+
+print "-------------------------------------------------------------";
+print "Computation Finished.";
