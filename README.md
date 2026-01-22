@@ -1,7 +1,7 @@
 # Explicit-Hecke-eigenform-product-identities-for-Hilbert-modular-forms
 
 # Overview
-This repository contains **SageMath** scripts developed to verify the numerical results and validate Theorem 1 of the paper:
+This repository contains **SageMath** scripts and **Magma** code developed to verify the numerical results and validate Theorem 1 of the paper:
              **Explicit Hecke eigenform product identities for Hilbert modular forms**
 
 # Methodology
@@ -14,7 +14,7 @@ The core strategy for verifying the product identities relies on the comparison 
 
 
 # File Structure & Description
-The codebase is divided into four SageMath scripts, corresponding to different cases of the modular forms involved.
+The codebase consists of four SageMath scripts corresponding to different cases of the modular forms, plus an independent Magma code for dimension computation.
 
 1. The case of Eisenstein-Eisenstein of distinct weights  
 Mathematical Basis: **Propositions 3.3 and 3.4**.  
@@ -32,21 +32,24 @@ Determines the upper bound for the weight k.
 Iterates through discriminants D to find satisfying fields and verifies the identities.  
 Result: This script reproduces **Table 1** of the paper, verifying the first part of Theorem 1.  
 
-4. The case of Eisenstein-Cusp with (2) inert  
+3. The case of Eisenstein-Cusp with (2) inert  
 Mathematical Basis: **Proposition 4.12**.  
 Logic:  
 Determines the upper bound for the weight k1.
 Iterates through each fixed k1 to find the upper bound for k2. For each pair (k1,k2), finds the upper bound for D.  
 Result: This script reproduces **Table 2** of the paper, verifying the second part of Theorem 1.  
 
-6. The case of Eisenstein-Cusp with (2) not inert  
+4. The case of Eisenstein-Cusp with (2) not inert  
 Mathematical Basis: **Proposition 4.13**.  
 Logic:  
 Similar to the inert case, determines the upper bound for k1.
 Iterates through k1 to limit k2, and subsequently limits D.  
 Result: These results reproduce **Table 3** of the paper, verifying the second part of Theorem 1.  
 
-
+5. Dimension of space of Hilbert cusp form (Magma)  
+Platform: [Magma Online Calculator](http://magma.maths.usyd.edu.au/calc/)  
+Description: It calculates the dimension of the space of Hilbert cusp forms $S_k(\Gamma)$ for real quadratic fields with full level.  
+Usage: It is used to verify the **dimensional reasons** in the Eisenstein-Cusp cases (Section 4). Specifically, it confirms the bounds and non-existence results (e.g., checking where $\dim S_k(\Gamma) > 1$) referenced in the proofs for **Table 3**.
 
 
 
