@@ -23,7 +23,7 @@ Logic:
 Initializes Real Quadratic Fields (e.g., $D=8,13,…$).  
 Defines lower bound functions derived from the coefficient formulas (Eq 3.2).  
   Phase 1: Determines a "Cutoff" for $k_2$. For any $k_1 > k_2 \geq$ Cutoff, the lower bound exceeds 1, implying no identities exist.  
-  Phase 2: Exhaustively searches the range $k_2< $ Cutoff. If the bound allows, it verifies the existence using the constant term identity (Eq 3.1).  
+  Phase 2: Exhaustively searches the range $k_2<$ Cutoff. If the bound allows, it verifies the existence using the constant term identity (Eq 3.1).  
 Result: This script reproduces the proof of **Propositions 3.4**.  
 
 2. The case of Eisenstein-Eisenstein of equal weights  
